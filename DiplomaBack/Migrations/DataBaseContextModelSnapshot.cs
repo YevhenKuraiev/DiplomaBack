@@ -31,6 +31,20 @@ namespace DiplomaBack.Migrations
 
                     b.ToTable("Cities");
                 });
+
+            modelBuilder.Entity("DiplomaBack.Models.RestaurantModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CountReviews");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Restaurants");
+                });
 #pragma warning restore 612, 618
         }
     }

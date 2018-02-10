@@ -11,8 +11,8 @@ using System;
 namespace DiplomaBack.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20180203171536_Initial")]
-    partial class Initial
+    [Migration("20180210152841_Restaurants")]
+    partial class Restaurants
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,6 +31,20 @@ namespace DiplomaBack.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("DiplomaBack.Models.RestaurantModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CountReviews");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Restaurants");
                 });
 #pragma warning restore 612, 618
         }
