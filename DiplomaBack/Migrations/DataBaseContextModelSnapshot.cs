@@ -32,6 +32,38 @@ namespace DiplomaBack.Migrations
                     b.ToTable("Cities");
                 });
 
+            modelBuilder.Entity("DiplomaBack.Models.DishModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<byte[]>("Image");
+
+                    b.Property<string>("Name");
+
+                    b.Property<double>("Price");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Dishes");
+                });
+
+            modelBuilder.Entity("DiplomaBack.Models.FileModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Path");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Files");
+                });
+
             modelBuilder.Entity("DiplomaBack.Models.RestaurantModel", b =>
                 {
                     b.Property<int>("Id")

@@ -20,7 +20,8 @@ namespace DiplomaBack
                 try
                 {
                     var context = services.GetRequiredService<DataBaseContext>();
-                    SampleData.Initialize(context);
+                    
+                    SampleData.Initialize(context, services.GetService<IHostingEnvironment>());
                 }
                 catch (Exception ex)
                 {

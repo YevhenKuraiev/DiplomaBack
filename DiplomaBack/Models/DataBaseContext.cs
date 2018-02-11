@@ -1,5 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Hosting.Internal;
+using Microsoft.EntityFrameworkCore;
+using System.IO;
 using System.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DiplomaBack.Models
 {
@@ -8,6 +12,7 @@ namespace DiplomaBack.Models
         public DbSet<CityModel> Cities { get; set; }
         public DbSet<RestaurantModel> Restaurants { get; set; }
         public DbSet<FileModel> Files { get; set; }
+        public DbSet<DishModel> Dishes { get; set; }
         public DataBaseContext(DbContextOptions<DataBaseContext> options)
             : base(options)
         { }
@@ -15,7 +20,7 @@ namespace DiplomaBack.Models
 
     public static class SampleData
     {
-        public static void Initialize(DataBaseContext context)
+        public static void Initialize(DataBaseContext context, IHostingEnvironment appEnvironment)
         {
             if (!context.Cities.Any())
             {
@@ -57,6 +62,23 @@ namespace DiplomaBack.Models
                 );
                 context.SaveChanges();
             }
+
+            if (!context.Dishes.Any())
+            {
+                context.Dishes.AddRange(
+                    new DishModel
+                    {
+                        Name = "Ролл",
+                        Price = 150,
+                        Description = "тестовое описание тестовое описание тестовое описание",
+                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/losos.jpg")
+                    }
+            
+                );
+                context.SaveChanges();
+            }
+
+
         }
     }
 
