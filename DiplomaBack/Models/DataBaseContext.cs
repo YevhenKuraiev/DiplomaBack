@@ -70,10 +70,40 @@ namespace DiplomaBack.Models
                     {
                         Name = "Ролл",
                         Price = 150,
-                        Description = "тестовое описание тестовое описание тестовое описание",
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
                         Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/losos.jpg")
+                    },
+                    new DishModel
+                    {
+                        Name = "Ролл 2",
+                        Price = 200,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/losos2.jpg")
+                    },
+                    new DishModel
+                    {
+                        Name = "Ролл 3",
+                        Price = 175,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/losos3.jpg")
                     }
-            
+                    ,
+                    new DishModel
+                    {
+                        Name = "Ролл 4",
+                        Price = 225,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/losos4.jpg")
+                    }
+                    ,
+                    new DishModel
+                    {
+                        Name = "Ролл 5",
+                        Price = 85,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/losos5.jpg")
+                    }
+
                 );
                 context.SaveChanges();
             }
