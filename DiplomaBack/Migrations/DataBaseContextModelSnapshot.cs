@@ -45,6 +45,8 @@ namespace DiplomaBack.Migrations
 
                     b.Property<double>("Price");
 
+                    b.Property<int>("Quantity");
+
                     b.HasKey("Id");
 
                     b.ToTable("Dishes");

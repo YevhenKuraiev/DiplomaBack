@@ -31,7 +31,8 @@ namespace DiplomaBack.Migrations
                     Description = table.Column<string>(nullable: true),
                     Image = table.Column<byte[]>(nullable: true),
                     Name = table.Column<string>(nullable: true),
-                    Price = table.Column<double>(nullable: false)
+                    Price = table.Column<double>(nullable: false),
+                    Quantity = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
