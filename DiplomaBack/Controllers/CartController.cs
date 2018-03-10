@@ -7,7 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DiplomaBack.Controllers
 {
-    [Route("api/Cart")]
+    [Produces("application/json")]
+    [EnableCors("MyPolicy")]
     public class CartController : Controller
     {
         private readonly DataBaseContext _context;
@@ -33,8 +34,8 @@ namespace DiplomaBack.Controllers
 
         // POST: api/Dishes
 
-        [HttpGet("{dishId}")]
-        public IActionResult AddToCart([FromRoute]int dishId)
+        [HttpPost]
+        public IActionResult AddToCart([FromBody]int dishId)
         {
             var dish = _context.Dishes
                 .FirstOrDefault(g => g.Id == dishId);
@@ -48,18 +49,18 @@ namespace DiplomaBack.Controllers
             return Ok();
         }
 
-        [HttpPost]
-        public RedirectToRouteResult RemoveFromCart(int dishId, string returnUrl)
-        {
-            var dish = _context.Dishes
-                .FirstOrDefault(g => g.Id == dishId);
+        //[HttpPost]
+        //public RedirectToRouteResult RemoveFromCart(int dishId, string returnUrl)
+        //{
+        //    var dish = _context.Dishes
+        //        .FirstOrDefault(g => g.Id == dishId);
 
-            if (dish != null)
-            {
-                cart.RemoveLine(dish);
-            }
-            return RedirectToRoute("Index", new { returnUrl });
-        }
+        //    if (dish != null)
+        //    {
+        //        cart.RemoveLine(dish);
+        //    }
+        //    return RedirectToRoute("Index", new { returnUrl });
+        //}
 
         //[HttpGet]
         //public Cart GetCart()

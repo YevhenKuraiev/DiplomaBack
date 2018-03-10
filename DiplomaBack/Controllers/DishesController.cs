@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DiplomaBack.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace DiplomaBack.Controllers
 {
     [Produces("application/json")]
     [Route("api/Dishes")]
+    [EnableCors("MyPolicy")]
     public class DishesController : Controller
     {
         private readonly DataBaseContext _context;
