@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Hosting.Internal;
-using Microsoft.EntityFrameworkCore;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
-using static System.Net.Mime.MediaTypeNames;
+using DiplomaBack.DAL.Entities;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 
-namespace DiplomaBack.Models
+namespace DiplomaBack.DAL.EntityFrameworkCore
 {
     public class DataBaseContext : DbContext
     {
@@ -14,7 +13,7 @@ namespace DiplomaBack.Models
         public DbSet<FileModel> Files { get; set; }
         public DbSet<DishModel> Dishes { get; set; }
         public DataBaseContext(DbContextOptions<DataBaseContext> options)
-            : base(options)
+            : base((DbContextOptions) options)
         { }
     }
 

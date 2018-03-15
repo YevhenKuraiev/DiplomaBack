@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
-namespace DiplomaBack.Models
+namespace DiplomaBack.SessionHelpers
 {
     public static class SessionExtensions
     {

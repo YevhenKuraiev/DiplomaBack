@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using DiplomaBack.DAL.Entities;
+using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Http;
 
-namespace DiplomaBack.Models
+namespace DiplomaBack.BLL.BusinessModels
 {
     public class Cart
     {

@@ -1,4 +1,4 @@
-﻿namespace DiplomaBack.Models
+﻿namespace DiplomaBack.DAL.Entities
 {
     public class CityModel
     {

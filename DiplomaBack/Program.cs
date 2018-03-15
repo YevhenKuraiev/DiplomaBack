@@ -1,5 +1,5 @@
 ﻿using System;
-using DiplomaBack.Models;
+using DiplomaBack.DAL.EntityFrameworkCore;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;

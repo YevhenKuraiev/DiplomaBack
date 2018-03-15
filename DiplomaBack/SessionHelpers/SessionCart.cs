@@ -1,9 +1,11 @@
 ﻿using System;
+using DiplomaBack.BLL.BusinessModels;
+using DiplomaBack.DAL.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 
-namespace DiplomaBack.Models
+namespace DiplomaBack.SessionHelpers
 {
     public class SessionCart : Cart
     {
@@ -11,7 +13,7 @@ namespace DiplomaBack.Models
         public ISession Session { get; set; }
         public static Cart GetCart(IServiceProvider services)
         {
-            ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+            ISession session = ServiceProviderServiceExtensions.GetRequiredService<IHttpContextAccessor>(services)?.HttpContext.Session;
             SessionCart cart = session?.Get<SessionCart>("Cart") ?? new SessionCart();
             cart.Session = session;
             return cart;
