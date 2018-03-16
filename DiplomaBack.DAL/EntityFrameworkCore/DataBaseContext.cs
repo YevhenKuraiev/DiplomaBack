@@ -12,6 +12,7 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
         public DbSet<RestaurantModel> Restaurants { get; set; }
         public DbSet<FileModel> Files { get; set; }
         public DbSet<DishModel> Dishes { get; set; }
+        public DbSet<CategoryModel> Categories { get; set; }
         public DataBaseContext(DbContextOptions<DataBaseContext> options)
             : base((DbContextOptions) options)
         { }
@@ -107,7 +108,35 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                 context.SaveChanges();
             }
 
+            if (!context.Categories.Any())
+            {
+                context.Categories.AddRange(
+                    new CategoryModel()
+                    {
+                        Name = "Суши",
+                    },
+                    new CategoryModel
+                    {
+                        Name = "Супы",
+                    },
+                    new CategoryModel
+                    {
+                        Name = "Напитки",
+                    }
+                    ,
+                    new CategoryModel
+                    {
+                        Name = "Пицца",
+                    }
+                    ,
+                    new CategoryModel
+                    {
+                        Name = "Бургеры",
+                    }
 
+                );
+                context.SaveChanges();
+            }
         }
     }
 

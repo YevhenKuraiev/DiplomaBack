@@ -22,7 +22,7 @@ namespace DiplomaBack
         public void ConfigureServices(IServiceCollection services)
         {
             string con = "Server=(localdb)\\mssqllocaldb;Database=deliveryfooddbstore;Trusted_Connection=True;MultipleActiveResultSets=true";
-            services.AddDbContext<DataBaseContext>(options => options.UseSqlServer(con));
+            services.AddDbContext<DataBaseContext>(options => options.UseSqlServer(con, b => b.MigrationsAssembly("DiplomaBack")));
 
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
