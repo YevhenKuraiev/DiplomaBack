@@ -13,6 +13,7 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
         public DbSet<FileModel> Files { get; set; }
         public DbSet<DishModel> Dishes { get; set; }
         public DbSet<CategoryModel> Categories { get; set; }
+        public DbSet<UserModel> Users { get; set; }
         public DataBaseContext(DbContextOptions<DataBaseContext> options)
             : base((DbContextOptions) options)
         { }
@@ -48,19 +49,16 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                     {
                         Name = "Гусь",
                         CountReviews = 100,
-                        Id = 0
                     },
                     new RestaurantModel
                     {
                         Name = "Мафия",
                         CountReviews = 50,
-                        Id = 1
                     },
                     new RestaurantModel
                     {
                         Name = "БИг бен",
                         CountReviews = 25,
-                        Id = 2
                     }
                 );
                 context.SaveChanges();
@@ -74,7 +72,7 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         Name = "Ролл",
                         Price = 150,
                         Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/losos.jpg"),
+                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Sushi/losos.jpg"),
                         RestaurantId = 0,
                         CategoryId = 0
                     },
@@ -83,18 +81,18 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         Name = "Ролл 2",
                         Price = 200,
                         Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/losos2.jpg"),
+                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Sushi/losos2.jpg"),
                         RestaurantId = 0,
-                        CategoryId = 2
+                        CategoryId = 0
                     },
                     new DishModel
                     {
                         Name = "Ролл 3",
                         Price = 175,
                         Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/losos3.jpg"),
+                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Sushi/losos3.jpg"),
                         RestaurantId = 1,
-                        CategoryId = 3
+                        CategoryId = 0
                     }
                     ,
                     new DishModel
@@ -102,9 +100,9 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         Name = "Ролл 4",
                         Price = 225,
                         Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/losos4.jpg"),
+                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Sushi/losos4.jpg"),
                         RestaurantId = 1,
-                        CategoryId = 4
+                        CategoryId = 0
                     }
                     ,
                     new DishModel
@@ -112,9 +110,72 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         Name = "Ролл 5",
                         Price = 85,
                         Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/losos5.jpg"),
+                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Sushi/losos5.jpg"),
+                        RestaurantId = 2,
+                        CategoryId = 0
+                    },
+                    new DishModel
+                    {
+                        Name = "Суп 1",
+                        Price = 85,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Soups/soup.jpg"),
                         RestaurantId = 2,
                         CategoryId = 1
+                    },
+                    new DishModel
+                    {
+                        Name = "Суп 2",
+                        Price = 95,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Soups/soup2.jpg"),
+                        RestaurantId = 2,
+                        CategoryId = 1
+                    },
+                    new DishModel
+                    {
+                        Name = "Суп 3",
+                        Price = 125,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Soups/soup3.jpg"),
+                        RestaurantId = 3,
+                        CategoryId = 1
+                    },
+                    new DishModel
+                    {
+                        Name = "Суп 4",
+                        Price = 155,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Soups/soup4.jpg"),
+                        RestaurantId = 2,
+                        CategoryId = 1
+                    },
+                    new DishModel
+                    {
+                        Name = "Суп 5",
+                        Price = 115,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Soups/soup5.jpg"),
+                        RestaurantId = 2,
+                        CategoryId = 1
+                    },
+                    new DishModel
+                    {
+                        Name = "Бургер 1",
+                        Price = 85,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Burgers/burger1.jpg"),
+                        RestaurantId = 1,
+                        CategoryId = 2
+                    },
+                    new DishModel
+                    {
+                        Name = "Бургер 2",
+                        Price = 65,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Burgers/burger2.jpg"),
+                        RestaurantId = 1,
+                        CategoryId = 2
                     }
 
                 );
@@ -127,32 +188,38 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                     new CategoryModel
                     {
                         Name = "Суши",
-                        Id = 0
                     },
                     new CategoryModel
                     {
                         Name = "Супы",
-                        Id = 1
+                    },
+                    new CategoryModel
+                    {
+                        Name = "Бургеры",
                     },
                     new CategoryModel
                     {
                         Name = "Напитки",
-                        Id = 2
-                    }
-                    ,
+                    },
                     new CategoryModel
                     {
                         Name = "Пицца",
-                        Id = 3
                     }
-                    ,
-                    new CategoryModel
-                    {
-                        Name = "Бургеры",
-                        Id = 4
-                    }
+                    
 
                 );
+                context.SaveChanges();
+            }
+
+            if (!context.Users.Any())
+            {
+                context.Users.AddRange(
+                    new UserModel
+                    {
+                        Name = "Admin",
+                        Login = "admin",
+                        Password = "admin"
+                    });
                 context.SaveChanges();
             }
         }

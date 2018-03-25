@@ -11,8 +11,8 @@ using System;
 namespace DiplomaBack.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20180315211124_Categories")]
-    partial class Categories
+    [Migration("20180325172412_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,6 +50,8 @@ namespace DiplomaBack.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("CategoryId");
+
                     b.Property<string>("Description");
 
                     b.Property<byte[]>("Image");
@@ -59,6 +61,8 @@ namespace DiplomaBack.Migrations
                     b.Property<double>("Price");
 
                     b.Property<int>("Quantity");
+
+                    b.Property<int>("RestaurantId");
 
                     b.HasKey("Id");
 
@@ -91,6 +95,22 @@ namespace DiplomaBack.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Restaurants");
+                });
+
+            modelBuilder.Entity("DiplomaBack.DAL.Entities.UserModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Login");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Password");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

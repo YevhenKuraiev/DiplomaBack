@@ -95,6 +95,22 @@ namespace DiplomaBack.Migrations
 
                     b.ToTable("Restaurants");
                 });
+
+            modelBuilder.Entity("DiplomaBack.DAL.Entities.UserModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Login");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Password");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
 #pragma warning restore 612, 618
         }
     }
