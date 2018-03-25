@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DiplomaBack.DAL.Entities;
 using DiplomaBack.DAL.EntityFrameworkCore;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
@@ -28,6 +26,14 @@ namespace DiplomaBack.Controllers
         public IEnumerable<DishModel> GetDishes()
         {
             return _context.Dishes;
+        }
+
+
+        // GET: api/Dishes/GetDishesByCategoryId/1
+        [HttpGet("GetDishesByCategoryId/{categoryId}")]
+        public IEnumerable<DishModel> GetDishes([FromRoute] int categoryId)
+        {
+            return _context.Dishes.Where(x => x.CategoryId == categoryId);
         }
 
         // GET: api/Dishes/5

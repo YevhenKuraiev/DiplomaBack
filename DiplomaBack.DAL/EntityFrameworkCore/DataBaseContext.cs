@@ -14,9 +14,11 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
         public DbSet<DishModel> Dishes { get; set; }
         public DbSet<CategoryModel> Categories { get; set; }
         public DbSet<UserModel> Users { get; set; }
+
         public DataBaseContext(DbContextOptions<DataBaseContext> options)
             : base((DbContextOptions) options)
-        { }
+        {
+        }
     }
 
     public static class SampleData
@@ -67,6 +69,9 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
             if (!context.Dishes.Any())
             {
                 context.Dishes.AddRange(
+
+                    #region Роллы
+
                     new DishModel
                     {
                         Name = "Ролл",
@@ -114,6 +119,11 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         RestaurantId = 2,
                         CategoryId = 0
                     },
+
+                    #endregion
+
+                    #region Супы
+
                     new DishModel
                     {
                         Name = "Суп 1",
@@ -159,6 +169,12 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         RestaurantId = 2,
                         CategoryId = 1
                     },
+
+                    #endregion
+
+                    #region Бургеры
+
+
                     new DishModel
                     {
                         Name = "Бургер 1",
@@ -177,6 +193,10 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         RestaurantId = 1,
                         CategoryId = 2
                     }
+
+                    #endregion
+
+
 
                 );
                 context.SaveChanges();
@@ -205,7 +225,7 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                     {
                         Name = "Пицца",
                     }
-                    
+
 
                 );
                 context.SaveChanges();
