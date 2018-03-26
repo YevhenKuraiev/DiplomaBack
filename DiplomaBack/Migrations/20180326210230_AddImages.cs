@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace DiplomaBack.Migrations
 {
-    public partial class Initial : Migration
+    public partial class AddImages : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -43,7 +43,7 @@ namespace DiplomaBack.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CategoryId = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
-                    Image = table.Column<byte[]>(nullable: true),
+                    Image = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Price = table.Column<double>(nullable: false),
                     Quantity = table.Column<int>(nullable: false),

@@ -11,8 +11,8 @@ using System;
 namespace DiplomaBack.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20180325172412_Initial")]
-    partial class Initial
+    [Migration("20180326210230_AddImages")]
+    partial class AddImages
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,7 +54,7 @@ namespace DiplomaBack.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<byte[]>("Image");
+                    b.Property<string>("Image");
 
                     b.Property<string>("Name");
 

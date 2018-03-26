@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.Linq;
+﻿using System.Linq;
 using DiplomaBack.DAL.Entities;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +22,8 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
 
     public static class SampleData
     {
+        private const string UrlApi = "http://localhost:60326/";
+
         public static void Initialize(DataBaseContext context, IHostingEnvironment appEnvironment)
         {
             if (!context.Cities.Any())
@@ -77,7 +78,7 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         Name = "Ролл",
                         Price = 150,
                         Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Sushi/losos.jpg"),
+                        Image = $"{UrlApi}Files/Dishes/Sushi/losos.jpg",
                         RestaurantId = 0,
                         CategoryId = 0
                     },
@@ -86,7 +87,7 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         Name = "Ролл 2",
                         Price = 200,
                         Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Sushi/losos2.jpg"),
+                        Image = $"{UrlApi}Files/Dishes/Sushi/losos2.jpg",
                         RestaurantId = 0,
                         CategoryId = 0
                     },
@@ -95,27 +96,25 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         Name = "Ролл 3",
                         Price = 175,
                         Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Sushi/losos3.jpg"),
+                        Image = $"{UrlApi}Files/Dishes/Sushi/losos3.jpg",
                         RestaurantId = 1,
                         CategoryId = 0
-                    }
-                    ,
+                    },
                     new DishModel
                     {
                         Name = "Ролл 4",
                         Price = 225,
                         Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Sushi/losos4.jpg"),
+                        Image = $"{UrlApi}Files/Dishes/Sushi/losos4.jpg",
                         RestaurantId = 1,
                         CategoryId = 0
-                    }
-                    ,
+                    },
                     new DishModel
                     {
                         Name = "Ролл 5",
                         Price = 85,
                         Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Sushi/losos5.jpg"),
+                        Image = $"{UrlApi}Files/Dishes/Sushi/losos5.jpg",
                         RestaurantId = 2,
                         CategoryId = 0
                     },
@@ -129,7 +128,7 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         Name = "Суп 1",
                         Price = 85,
                         Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Soups/soup.jpg"),
+                        Image = $"{UrlApi}Files/Dishes/Soups/soup.jpg",
                         RestaurantId = 2,
                         CategoryId = 1
                     },
@@ -138,7 +137,7 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         Name = "Суп 2",
                         Price = 95,
                         Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Soups/soup2.jpg"),
+                        Image = $"{UrlApi}Files/Dishes/Soups/soup2.jpg",
                         RestaurantId = 2,
                         CategoryId = 1
                     },
@@ -147,7 +146,7 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         Name = "Суп 3",
                         Price = 125,
                         Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Soups/soup3.jpg"),
+                        Image = $"{UrlApi}Files/Dishes/Soups/soup3.jpg",
                         RestaurantId = 3,
                         CategoryId = 1
                     },
@@ -156,7 +155,7 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         Name = "Суп 4",
                         Price = 155,
                         Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Soups/soup4.jpg"),
+                        Image = $"{UrlApi}Files/Dishes/Soups/soup4.jpg",
                         RestaurantId = 2,
                         CategoryId = 1
                     },
@@ -165,7 +164,7 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         Name = "Суп 5",
                         Price = 115,
                         Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Soups/soup5.jpg"),
+                        Image = $"{UrlApi}Files/Dishes/Soups/soup5.jpg",
                         RestaurantId = 2,
                         CategoryId = 1
                     },
@@ -180,7 +179,7 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         Name = "Бургер 1",
                         Price = 85,
                         Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Burgers/burger1.jpg"),
+                        Image = $"{UrlApi}Files/Dishes/Burgers/burger1.jpg",
                         RestaurantId = 1,
                         CategoryId = 2
                     },
@@ -189,13 +188,12 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         Name = "Бургер 2",
                         Price = 65,
                         Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = File.ReadAllBytes(appEnvironment.WebRootPath + "/Files/Dishes/Burgers/burger2.jpg"),
+                        Image = $"{UrlApi}Files/Dishes/Burgers/burger2.jpg",
                         RestaurantId = 1,
                         CategoryId = 2
                     }
 
                     #endregion
-
 
 
                 );
