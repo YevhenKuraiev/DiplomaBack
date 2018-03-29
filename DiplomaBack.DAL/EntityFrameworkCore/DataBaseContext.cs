@@ -1,18 +1,19 @@
 ﻿using System.Linq;
 using DiplomaBack.DAL.Entities;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DiplomaBack.DAL.EntityFrameworkCore
 {
-    public class DataBaseContext : DbContext
+    public class DataBaseContext : IdentityDbContext<UserModel>
     {
         public DbSet<CityModel> Cities { get; set; }
         public DbSet<RestaurantModel> Restaurants { get; set; }
         public DbSet<FileModel> Files { get; set; }
         public DbSet<DishModel> Dishes { get; set; }
         public DbSet<CategoryModel> Categories { get; set; }
-        public DbSet<UserModel> Users { get; set; }
+        public new DbSet<UserModel> Users { get; set; }
 
         public DataBaseContext(DbContextOptions<DataBaseContext> options)
             : base((DbContextOptions) options)
