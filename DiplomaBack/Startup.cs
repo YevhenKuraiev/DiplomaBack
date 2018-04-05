@@ -32,14 +32,15 @@ namespace DiplomaBack
                     .AllowAnyHeader();
             }));
             services.AddRouting();
-            services.AddScoped<Cart>(SessionCart.GetCart);
+            services.AddScoped(SessionCart.GetCart);
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddMvc().AddSessionStateTempDataProvider();
 
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
-                options.Cookie.HttpOnly = false;
+                //options.Cookie.HttpOnly = false;
+                //options.Cookie.SecurePolicy = CookieSecurePolicy.None;
             });
 
             //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -47,7 +48,6 @@ namespace DiplomaBack
             //    {
             //        options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
             //    });
-
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "Fat API", Version = "v1" });
@@ -79,7 +79,7 @@ namespace DiplomaBack
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Fat API V1");
             });
 
-
+            
             app.Run(async (context) =>
             {
                 if (!context.Session.Keys.Contains("Cart"))
