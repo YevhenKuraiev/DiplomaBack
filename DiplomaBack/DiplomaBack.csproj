@@ -21,8 +21,4 @@
     <ProjectReference Include="..\DiplomaBack.DAL\DiplomaBack.DAL.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
 </Project>

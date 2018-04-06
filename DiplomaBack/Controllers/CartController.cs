@@ -8,6 +8,7 @@ namespace DiplomaBack.Controllers
 {
     [Produces("application/json")]
     [Route("api/Cart")]
+    [EnableCors("MyPolicy")]
     public class CartController : Controller
     {
         private readonly DataBaseContext _context;

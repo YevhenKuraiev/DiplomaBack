@@ -29,6 +29,8 @@ namespace DiplomaBack
             {
                 builder.AllowAnyOrigin()
                     .AllowAnyMethod()
+                    .AllowCredentials()
+                    .SetIsOriginAllowedToAllowWildcardSubdomains()
                     .AllowAnyHeader();
             }));
             services.AddRouting();
@@ -39,8 +41,8 @@ namespace DiplomaBack
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
-                //options.Cookie.HttpOnly = false;
-                //options.Cookie.SecurePolicy = CookieSecurePolicy.None;
+                options.Cookie.HttpOnly = true;
+                options.Cookie.SecurePolicy = CookieSecurePolicy.None;
             });
 
             //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -50,7 +52,7 @@ namespace DiplomaBack
             //    });
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "Fat API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "API", Version = "v1" });
             });
         }
 
@@ -64,8 +66,23 @@ namespace DiplomaBack
             }
             app.UseCors("MyPolicy");
             app.UseSession();
+
+            app.Use(async (context, next) =>
+            {
+                if (!context.Session.Keys.Contains("Cart"))
+                {
+                    context.Session.Set<Cart>("Cart", new Cart());
+                }
+                else
+                {
+                    context.Session.Get<Cart>("Cart");
+                }
+                await next.Invoke();
+            });
+
             app.UseMvc(routes =>
             {
+                routes.MapRoute("route0", "api/{controller}/{id?}");
                 routes.MapRoute("default", "{controller}/{action}/{id?}");
                 routes.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "Index" });
             });
@@ -76,7 +93,7 @@ namespace DiplomaBack
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Fat API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
             });
 
             
@@ -86,7 +103,13 @@ namespace DiplomaBack
                 {
                     context.Session.Set<Cart>("Cart", new Cart());
                 }
+                else
+                {
+                    context.Session.Get<Cart>("Cart");
+                }
             });
+
+
         }
     }
 }

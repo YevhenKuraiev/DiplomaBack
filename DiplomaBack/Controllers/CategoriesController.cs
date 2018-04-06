@@ -23,9 +23,9 @@ namespace DiplomaBack.Controllers
 
         // GET: api/Categories
         [HttpGet]
-        public IEnumerable<CategoryModel> GetCategories()
+        public IEnumerable<DishCategoryModel> GetCategories()
         {
-            return _context.Categories;
+            return _context.DishCategories;
         }
 
         // GET: api/Categories/5
@@ -37,7 +37,7 @@ namespace DiplomaBack.Controllers
                 return BadRequest(ModelState);
             }
 
-            var categoryModel = await _context.Categories.SingleOrDefaultAsync(m => m.Id == id);
+            var categoryModel = await _context.DishCategories.SingleOrDefaultAsync(m => m.Id == id);
 
             if (categoryModel == null)
             {
@@ -49,7 +49,7 @@ namespace DiplomaBack.Controllers
 
         // PUT: api/Categories/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategoryModel([FromRoute] int id, [FromBody] CategoryModel categoryModel)
+        public async Task<IActionResult> PutCategoryModel([FromRoute] int id, [FromBody] DishCategoryModel categoryModel)
         {
             if (!ModelState.IsValid)
             {
@@ -84,14 +84,14 @@ namespace DiplomaBack.Controllers
 
         // POST: api/Categories
         [HttpPost]
-        public async Task<IActionResult> PostCategoryModel([FromBody] CategoryModel categoryModel)
+        public async Task<IActionResult> PostCategoryModel([FromBody] DishCategoryModel categoryModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Categories.Add(categoryModel);
+            _context.DishCategories.Add(categoryModel);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetCategoryModel", new { id = categoryModel.Id }, categoryModel);
@@ -106,13 +106,13 @@ namespace DiplomaBack.Controllers
                 return BadRequest(ModelState);
             }
 
-            var categoryModel = await _context.Categories.SingleOrDefaultAsync(m => m.Id == id);
+            var categoryModel = await _context.DishCategories.SingleOrDefaultAsync(m => m.Id == id);
             if (categoryModel == null)
             {
                 return NotFound();
             }
 
-            _context.Categories.Remove(categoryModel);
+            _context.DishCategories.Remove(categoryModel);
             await _context.SaveChangesAsync();
 
             return Ok(categoryModel);
@@ -120,7 +120,7 @@ namespace DiplomaBack.Controllers
 
         private bool CategoryModelExists(int id)
         {
-            return _context.Categories.Any(e => e.Id == id);
+            return _context.DishCategories.Any(e => e.Id == id);
         }
     }
 }
