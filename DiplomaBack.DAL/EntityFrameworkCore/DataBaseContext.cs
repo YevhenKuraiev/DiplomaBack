@@ -15,7 +15,7 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
         public DbSet<FileModel> Files { get; set; }
         public DbSet<DishModel> Dishes { get; set; }
         public DbSet<DishCategoryModel> DishCategories { get; set; }
-        public DbSet<UserModel> Users { get; set; }
+        //public new DbSet<UserModel> Users { get; set; }
         public DbSet<DishOrderModel> DishOrders{ get; set; }
         public DbSet<OrderModel> Orders { get; set; }
 

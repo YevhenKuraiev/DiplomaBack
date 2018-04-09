@@ -52,19 +52,6 @@ namespace DiplomaBack.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Categories",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Cities",
                 columns: table => new
                 {
@@ -75,6 +62,19 @@ namespace DiplomaBack.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Cities", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DishCategories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DishCategories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -111,12 +111,45 @@ namespace DiplomaBack.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DateTime = table.Column<DateTime>(nullable: false),
+                    DeliveryAddress = table.Column<string>(nullable: true),
+                    OrderPrice = table.Column<double>(nullable: false),
+                    UserId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RestaurantCategories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RestaurantCategories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Restaurants",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Address = table.Column<string>(nullable: true),
+                    CityId = table.Column<int>(nullable: false),
                     CountReviews = table.Column<int>(nullable: false),
+                    Decsription = table.Column<string>(nullable: true),
+                    MinimunSum = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -230,6 +263,33 @@ namespace DiplomaBack.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "DishOrders",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DishModelId = table.Column<int>(nullable: true),
+                    OrderModelId = table.Column<int>(nullable: true),
+                    Quantity = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DishOrders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DishOrders_Dishes_DishModelId",
+                        column: x => x.DishModelId,
+                        principalTable: "Dishes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_DishOrders_Orders_OrderModelId",
+                        column: x => x.OrderModelId,
+                        principalTable: "Orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -268,6 +328,16 @@ namespace DiplomaBack.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DishOrders_DishModelId",
+                table: "DishOrders",
+                column: "DishModelId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DishOrders_OrderModelId",
+                table: "DishOrders",
+                column: "OrderModelId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -288,16 +358,19 @@ namespace DiplomaBack.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Categories");
-
-            migrationBuilder.DropTable(
                 name: "Cities");
 
             migrationBuilder.DropTable(
-                name: "Dishes");
+                name: "DishCategories");
+
+            migrationBuilder.DropTable(
+                name: "DishOrders");
 
             migrationBuilder.DropTable(
                 name: "Files");
+
+            migrationBuilder.DropTable(
+                name: "RestaurantCategories");
 
             migrationBuilder.DropTable(
                 name: "Restaurants");
@@ -307,6 +380,12 @@ namespace DiplomaBack.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Dishes");
+
+            migrationBuilder.DropTable(
+                name: "Orders");
         }
     }
 }

@@ -20,18 +20,6 @@ namespace DiplomaBack.Migrations
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("DiplomaBack.DAL.Entities.CategoryModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Categories");
-                });
-
             modelBuilder.Entity("DiplomaBack.DAL.Entities.CityModel", b =>
                 {
                     b.Property<int>("Id")
@@ -42,6 +30,18 @@ namespace DiplomaBack.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("DiplomaBack.DAL.Entities.DishCategoryModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DishCategories");
                 });
 
             modelBuilder.Entity("DiplomaBack.DAL.Entities.DishModel", b =>
@@ -82,12 +82,70 @@ namespace DiplomaBack.Migrations
                     b.ToTable("Files");
                 });
 
+            modelBuilder.Entity("DiplomaBack.DAL.Entities.Order.DishOrderModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("DishModelId");
+
+                    b.Property<int?>("OrderModelId");
+
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DishModelId");
+
+                    b.HasIndex("OrderModelId");
+
+                    b.ToTable("DishOrders");
+                });
+
+            modelBuilder.Entity("DiplomaBack.DAL.Entities.Order.OrderModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DateTime");
+
+                    b.Property<string>("DeliveryAddress");
+
+                    b.Property<double>("OrderPrice");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("DiplomaBack.DAL.Entities.RestaurantCategoryModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RestaurantCategories");
+                });
+
             modelBuilder.Entity("DiplomaBack.DAL.Entities.RestaurantModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Address");
+
+                    b.Property<int>("CityId");
+
                     b.Property<int>("CountReviews");
+
+                    b.Property<string>("Decsription");
+
+                    b.Property<string>("MinimunSum");
 
                     b.Property<string>("Name");
 
@@ -259,6 +317,17 @@ namespace DiplomaBack.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("DiplomaBack.DAL.Entities.Order.DishOrderModel", b =>
+                {
+                    b.HasOne("DiplomaBack.DAL.Entities.DishModel", "DishModel")
+                        .WithMany()
+                        .HasForeignKey("DishModelId");
+
+                    b.HasOne("DiplomaBack.DAL.Entities.Order.OrderModel")
+                        .WithMany("Dishes")
+                        .HasForeignKey("OrderModelId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
