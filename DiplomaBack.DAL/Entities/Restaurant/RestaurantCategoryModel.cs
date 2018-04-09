@@ -1,6 +1,6 @@
 ﻿namespace DiplomaBack.DAL.Entities
 {
-    public class CategoryModel
+    public class RestaurantCategoryModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

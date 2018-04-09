@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using DiplomaBack.DAL.Entities;
+using DiplomaBack.DAL.Entities.Order;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -10,10 +11,13 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
     {
         public DbSet<CityModel> Cities { get; set; }
         public DbSet<RestaurantModel> Restaurants { get; set; }
+        public DbSet<RestaurantCategoryModel> RestaurantCategories { get; set; }
         public DbSet<FileModel> Files { get; set; }
         public DbSet<DishModel> Dishes { get; set; }
-        public DbSet<CategoryModel> Categories { get; set; }
-        public new DbSet<UserModel> Users { get; set; }
+        public DbSet<DishCategoryModel> DishCategories { get; set; }
+        public DbSet<UserModel> Users { get; set; }
+        public DbSet<DishOrderModel> DishOrders{ get; set; }
+        public DbSet<OrderModel> Orders { get; set; }
 
         public DataBaseContext(DbContextOptions<DataBaseContext> options)
             : base((DbContextOptions) options)
@@ -201,26 +205,26 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                 context.SaveChanges();
             }
 
-            if (!context.Categories.Any())
+            if (!context.DishCategories.Any())
             {
-                context.Categories.AddRange(
-                    new CategoryModel
+                context.DishCategories.AddRange(
+                    new DishCategoryModel
                     {
                         Name = "Суши",
                     },
-                    new CategoryModel
+                    new DishCategoryModel
                     {
                         Name = "Супы",
                     },
-                    new CategoryModel
+                    new DishCategoryModel
                     {
                         Name = "Бургеры",
                     },
-                    new CategoryModel
+                    new DishCategoryModel
                     {
                         Name = "Напитки",
                     },
-                    new CategoryModel
+                    new DishCategoryModel
                     {
                         Name = "Пицца",
                     }

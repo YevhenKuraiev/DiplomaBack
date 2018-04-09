@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using DiplomaBack.BLL.BusinessModels;
 using DiplomaBack.DAL.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
@@ -9,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DiplomaBack.Controllers
 {
     [Produces("application/json")]
+    [Route("api/Cart")]
     [EnableCors("MyPolicy")]
     public class CartController : Controller
     {
@@ -38,8 +37,7 @@ namespace DiplomaBack.Controllers
         [HttpPost]
         public IActionResult AddToCart([FromBody]int dishId)
         {
-            var dish = _context.Dishes
-                .FirstOrDefault(g => g.Id == dishId);
+            var dish = _context.Dishes.FirstOrDefault(g => g.Id == dishId);
 
 
             if (dish != null)
