@@ -55,18 +55,30 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                 context.Restaurants.AddRange(
                     new RestaurantModel
                     {
-                        Name = "Гусь",
-                        CountReviews = 100,
+                        Name = "Fat Goose Pub",
+                        Decsription = "В Харькове есть место, где можно прочувствовать пабную атмосферу настоящей Англии, наслаждаясь при этом аутентичными интерьерами: «Жирный Гусь» всегда рад гостям, какую бы цель вы не преследовали: попробовать новые сорта пива, излить душу бармену под стаканчик виски или же найти истину в вине.",
+                        Address = "ул. Космическая, вулиця Космічна, 21, Харків, Харківська область, 61000",
+                        MinimunSum = 100,
+                        Image = $"{UrlApi}Files/Restaurants/Kharkov/FatGoosePub.png",
+                        CityId = 0
                     },
                     new RestaurantModel
                     {
                         Name = "Мафия",
-                        CountReviews = 50,
+                        Decsription = "Демократичные цены и высокое качество блюд — вот чем известна сеть ресторанов «Мафия» в Харькове. Изюминкой итальянской кухни в заведении считается фирменная метровая пицца. Выглядит она эффектно, на вкус — изумительное блюдо на тонком тесте с большим количеством начинки. Метровая пицца весит более одного килограмма, потому она — отличный выбор для большой компании.",
+                        Address = "улица Квитки-Основьяненко, 7, Харків, Харківська область, 61000",
+                        MinimunSum = 99,
+                        Image = $"{UrlApi}Files/Restaurants/Kharkov/Mafia.jpg",
+                        CityId = 0
                     },
                     new RestaurantModel
                     {
-                        Name = "БИг бен",
-                        CountReviews = 25,
+                        Name = "Биг Бен Паб",
+                        Decsription = "Big Ben Pub - это пивной ресторан, пивной бар, НО в первую очередь Big Ben Pub - это настоящий английский паб в Харькове.",
+                        Address = "Пр. Науки, 48 | D.48, Харьков 61103, Украина",
+                        MinimunSum = 150,
+                        Image = $"{UrlApi}Files/Restaurants/Kharkov/BigBenPub.jpg",
+                        CityId = 0
                     }
                 );
                 context.SaveChanges();

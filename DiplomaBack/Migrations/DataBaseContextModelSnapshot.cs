@@ -141,11 +141,11 @@ namespace DiplomaBack.Migrations
 
                     b.Property<int>("CityId");
 
-                    b.Property<int>("CountReviews");
-
                     b.Property<string>("Decsription");
 
-                    b.Property<string>("MinimunSum");
+                    b.Property<string>("Image");
+
+                    b.Property<double>("MinimunSum");
 
                     b.Property<string>("Name");
 
