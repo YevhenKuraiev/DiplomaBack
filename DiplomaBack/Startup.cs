@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using DiplomaBack.BLL.BusinessModels;
-using DiplomaBack.DAL.EntityFrameworkCore;
-using DiplomaBack.SessionHelpers;
+﻿using DiplomaBack.DAL.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -30,20 +27,11 @@ namespace DiplomaBack
                 builder.AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowCredentials()
-                    .SetIsOriginAllowedToAllowWildcardSubdomains()
                     .AllowAnyHeader();
             }));
             services.AddRouting();
-            services.AddScoped(SessionCart.GetCart);
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddMvc().AddSessionStateTempDataProvider();
-
-            services.AddDistributedMemoryCache();
-            services.AddSession(options =>
-            {
-                options.Cookie.HttpOnly = true;
-                options.Cookie.SecurePolicy = CookieSecurePolicy.None;
-            });
+            services.AddMvc();
 
             //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             //    .AddCookie(options => //CookieAuthenticationOptions
@@ -65,18 +53,9 @@ namespace DiplomaBack
                 app.UseDeveloperExceptionPage();
             }
             app.UseCors("MyPolicy");
-            app.UseSession();
 
             app.Use(async (context, next) =>
             {
-                if (!context.Session.Keys.Contains("Cart"))
-                {
-                    context.Session.Set<Cart>("Cart", new Cart());
-                }
-                else
-                {
-                    context.Session.Get<Cart>("Cart");
-                }
                 await next.Invoke();
             });
 
@@ -97,17 +76,17 @@ namespace DiplomaBack
             });
 
             
-            app.Run(async (context) =>
-            {
-                if (!context.Session.Keys.Contains("Cart"))
-                {
-                    context.Session.Set<Cart>("Cart", new Cart());
-                }
-                else
-                {
-                    context.Session.Get<Cart>("Cart");
-                }
-            });
+            //app.Run(async (context) =>
+            //{
+            //    if (!context.Session.Keys.Contains("Cart"))
+            //    {
+            //        context.Session.Set<Cart>("Cart", new Cart());
+            //    }
+            //    else
+            //    {
+            //        context.Session.Get<Cart>("Cart");
+            //    }
+            //});
 
 
         }

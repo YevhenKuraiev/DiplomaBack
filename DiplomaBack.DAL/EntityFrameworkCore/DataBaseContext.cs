@@ -2,11 +2,12 @@
 using DiplomaBack.DAL.Entities;
 using DiplomaBack.DAL.Entities.Order;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DiplomaBack.DAL.EntityFrameworkCore
 {
-    public class DataBaseContext : DbContext
+    public class DataBaseContext : IdentityDbContext<UserModel>
     {
         public DbSet<CityModel> Cities { get; set; }
         public DbSet<RestaurantModel> Restaurants { get; set; }
@@ -14,7 +15,7 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
         public DbSet<FileModel> Files { get; set; }
         public DbSet<DishModel> Dishes { get; set; }
         public DbSet<DishCategoryModel> DishCategories { get; set; }
-        public DbSet<UserModel> Users { get; set; }
+        //public new DbSet<UserModel> Users { get; set; }
         public DbSet<DishOrderModel> DishOrders{ get; set; }
         public DbSet<OrderModel> Orders { get; set; }
 
