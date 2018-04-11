@@ -147,7 +147,7 @@ namespace DiplomaBack.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Address = table.Column<string>(nullable: true),
                     CityId = table.Column<int>(nullable: false),
-                    Decsription = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
                     Image = table.Column<string>(nullable: true),
                     MinimunSum = table.Column<double>(nullable: false),
                     Name = table.Column<string>(nullable: true)

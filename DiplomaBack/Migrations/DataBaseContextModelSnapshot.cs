@@ -141,7 +141,7 @@ namespace DiplomaBack.Migrations
 
                     b.Property<int>("CityId");
 
-                    b.Property<string>("Decsription");
+                    b.Property<string>("Description");
 
                     b.Property<string>("Image");
 

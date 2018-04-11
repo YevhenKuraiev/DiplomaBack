@@ -11,7 +11,7 @@ using System;
 namespace DiplomaBack.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20180410150526_Initial")]
+    [Migration("20180411120605_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -142,7 +142,7 @@ namespace DiplomaBack.Migrations
 
                     b.Property<int>("CityId");
 
-                    b.Property<string>("Decsription");
+                    b.Property<string>("Description");
 
                     b.Property<string>("Image");
 
