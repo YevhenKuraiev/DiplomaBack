@@ -11,7 +11,7 @@ using System;
 namespace DiplomaBack.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20180411120605_Initial")]
+    [Migration("20180416143605_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -88,17 +88,13 @@ namespace DiplomaBack.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("DishModelId");
+                    b.Property<int>("DishId");
 
-                    b.Property<int?>("OrderModelId");
+                    b.Property<int>("OrderId");
 
                     b.Property<int>("Quantity");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DishModelId");
-
-                    b.HasIndex("OrderModelId");
 
                     b.ToTable("DishOrders");
                 });
@@ -114,7 +110,7 @@ namespace DiplomaBack.Migrations
 
                     b.Property<double>("OrderPrice");
 
-                    b.Property<int>("UserId");
+                    b.Property<string>("PhoneNumber");
 
                     b.HasKey("Id");
 
@@ -318,17 +314,6 @@ namespace DiplomaBack.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("DiplomaBack.DAL.Entities.Order.DishOrderModel", b =>
-                {
-                    b.HasOne("DiplomaBack.DAL.Entities.DishModel", "DishModel")
-                        .WithMany()
-                        .HasForeignKey("DishModelId");
-
-                    b.HasOne("DiplomaBack.DAL.Entities.Order.OrderModel")
-                        .WithMany("Dishes")
-                        .HasForeignKey("OrderModelId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
