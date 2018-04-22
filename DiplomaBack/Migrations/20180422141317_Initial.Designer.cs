@@ -11,7 +11,7 @@ using System;
 namespace DiplomaBack.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20180416143605_Initial")]
+    [Migration("20180422141317_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
