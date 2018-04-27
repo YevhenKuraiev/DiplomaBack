@@ -25,28 +25,7 @@ namespace DiplomaBack.Controllers
         [HttpGet]
         public IEnumerable<RestaurantModel> GetRestaurants()
         {
-            var list = new List<Route>();
-            list.Add(new Route
-            {
-                From = "Харьков",
-                To = "Киев"
-            });
-            list.Add(new Route
-            {
-                From = "Харьков",
-                To = "Львов"
-            });
-            list.Add(new Route
-            {
-                From = "Харьков",
-                To = "Одесса"
-            });
-            list.Add(new Route
-            {
-                From = "Харьков",
-                To = "Донецк"
-            });
-            var res = new DistanceBuilder().GetRoutesWithDistance(list);
+            
             return _context.Restaurants;
         }
 

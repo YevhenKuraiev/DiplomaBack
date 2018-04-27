@@ -10,9 +10,9 @@ namespace DiplomaBack.BLL
     {
         private static readonly MapsAPIClient Client = new MapsAPIClient("AIzaSyBP1XG4Z5nph35aVskXQuhBmESwZc3_JXU");
 
-        public Dictionary<string, long> GetRoutesWithDistance(List<Route> routes)
+        public List<RouteInfo> GetRoutesWithDistance(List<Route> routes)
         {
-            var routesWithDistance = new Dictionary<string, long>();
+            var routesWithDistance = new List<RouteInfo>();
             foreach (var route in routes)
             {
                 //var resul = _client.DistanceMatrix.GetDistanceMatrix
@@ -33,7 +33,10 @@ namespace DiplomaBack.BLL
                         break;
                     }
                 }
-                routesWithDistance.Add($"{route.From} - {route.To}: {textDistance}", distance);
+                var routeInfo = new RouteInfo();
+                routeInfo.Route = $"{route.From} - {route.To}: {textDistance}";
+                routeInfo.Distance = distance;
+                routesWithDistance.Add(routeInfo);
             }
             return routesWithDistance;
         }
