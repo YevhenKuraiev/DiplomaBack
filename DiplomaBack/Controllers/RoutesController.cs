@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DiplomaBack.BLL;
 using DiplomaBack.BLL.BusinessModels;
+using DiplomaBack.DAL.Entities.Order;
 using DiplomaBack.DAL.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,34 +25,37 @@ namespace DiplomaBack.Controllers
         [HttpGet]
         public List<RouteInfo> Get()
         {
-            //var orders = _context.Orders;
-            //foreach (var order in orders)
-            //{
-            //    order.DeliveryAddress
-            //}
-            var list = new List<Route>();
-            list.Add(new Route
+            List<OrderModel> orderModels = new List<OrderModel>
             {
-                From = "Харьков",
-                To = "Киев"
-            });
-            list.Add(new Route
+                new OrderModel
+                {
+                    DeliveryAddress = "вулиця Сумська, 15"
+                }
+            };
+            orderModels.AddRange(_context.Orders);
+            var distanceList = new DistanceBuilder().GetCourierRoute(GetRoutesFromOrders(orderModels), orderModels.Count);
+            return distanceList;
+        }
+
+
+        private List<Route> GetRoutesFromOrders(List<OrderModel> orderModels)
+        {
+            var routes = new List<Route>();
+            var counter = 0;
+            while (counter != orderModels.Count)
             {
-                From = "Харьков",
-                To = "Львов"
-            });
-            list.Add(new Route
-            {
-                From = "Харьков",
-                To = "Одесса"
-            });
-            list.Add(new Route
-            {
-                From = "Харьков",
-                To = "Донецк"
-            });
-            var result = new DistanceBuilder().GetRoutesWithDistance(list);
-            return result;
+                for (int i = 0; i < orderModels.Count; i++)
+                {
+                    if (i == counter) continue;
+                    routes.Add(new Route
+                    {
+                        From = orderModels[counter].DeliveryAddress,
+                        To = orderModels[i].DeliveryAddress,
+                    });
+                }
+                counter++;
+            }
+            return routes;
         }
 
         // GET: api/Routes/5
