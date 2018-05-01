@@ -32,12 +32,6 @@ namespace DiplomaBack
             services.AddRouting();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddMvc();
-
-            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-            //    .AddCookie(options => //CookieAuthenticationOptions
-            //    {
-            //        options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
-            //    });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "API", Version = "v1" });
@@ -74,21 +68,6 @@ namespace DiplomaBack
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
             });
-
-            
-            //app.Run(async (context) =>
-            //{
-            //    if (!context.Session.Keys.Contains("Cart"))
-            //    {
-            //        context.Session.Set<Cart>("Cart", new Cart());
-            //    }
-            //    else
-            //    {
-            //        context.Session.Get<Cart>("Cart");
-            //    }
-            //});
-
-
         }
     }
 }

@@ -5,16 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dijkstra.NET" Version="1.0.8" />
-    <PackageReference Include="GoogleMapsAPI.NET" Version="1.0.0" />
-    <PackageReference Include="HamiltonianGraph" Version="1.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="2.4.0" />
-    <PackageReference Include="TSPLib.Net" Version="1.1.5" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +19,10 @@
   <ItemGroup>
     <ProjectReference Include="..\DiplomaBack.BLL\DiplomaBack.BLL.csproj" />
     <ProjectReference Include="..\DiplomaBack.DAL\DiplomaBack.DAL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>

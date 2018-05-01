@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using DiplomaBack.BLL.BusinessModels;
 using GoogleMapsAPI.NET.API.Client;
@@ -8,7 +7,7 @@ using HamiltonianGraph;
 
 namespace DiplomaBack.BLL
 {
-    public class DistanceBuilder
+    public class DistanceBuilderService
     {
         private static readonly MapsAPIClient Client = new MapsAPIClient("AIzaSyBP1XG4Z5nph35aVskXQuhBmESwZc3_JXU");
 

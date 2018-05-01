@@ -33,7 +33,7 @@ namespace DiplomaBack.Controllers
                 }
             };
             orderModels.AddRange(_context.Orders);
-            var distanceList = new DistanceBuilder().GetCourierRoute(GetRoutesFromOrders(orderModels), orderModels.Count);
+            var distanceList = new DistanceBuilderService().GetCourierRoute(GetRoutesFromOrders(orderModels), orderModels.Count);
             return distanceList;
         }
 
