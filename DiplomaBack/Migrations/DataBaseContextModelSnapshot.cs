@@ -32,6 +32,20 @@ namespace DiplomaBack.Migrations
                     b.ToTable("Cities");
                 });
 
+            modelBuilder.Entity("DiplomaBack.DAL.Entities.CourierModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("IdentityId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdentityId");
+
+                    b.ToTable("Couriers");
+                });
+
             modelBuilder.Entity("DiplomaBack.DAL.Entities.DishCategoryModel", b =>
                 {
                     b.Property<int>("Id")
@@ -165,21 +179,19 @@ namespace DiplomaBack.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
-
-                    b.Property<string>("Login");
-
-                    b.Property<string>("Name");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256);
-
-                    b.Property<string>("Password");
 
                     b.Property<string>("PasswordHash");
 
@@ -313,6 +325,13 @@ namespace DiplomaBack.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("DiplomaBack.DAL.Entities.CourierModel", b =>
+                {
+                    b.HasOne("DiplomaBack.DAL.Entities.UserModel", "Identity")
+                        .WithMany()
+                        .HasForeignKey("IdentityId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

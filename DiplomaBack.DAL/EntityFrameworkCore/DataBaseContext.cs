@@ -15,7 +15,7 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
         public DbSet<FileModel> Files { get; set; }
         public DbSet<DishModel> Dishes { get; set; }
         public DbSet<DishCategoryModel> DishCategories { get; set; }
-        //public new DbSet<UserModel> Users { get; set; }
+        public DbSet<CourierModel> Couriers { get; set; }
         public DbSet<DishOrderModel> DishOrders{ get; set; }
         public DbSet<OrderModel> Orders { get; set; }
 
@@ -31,6 +31,8 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
 
         public static void Initialize(DataBaseContext context, IHostingEnvironment appEnvironment)
         {
+            //context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
             if (!context.Cities.Any())
             {
                 context.Cities.AddRange(
@@ -262,14 +264,16 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                 context.SaveChanges();
             }
 
-            if (!context.Users.Any())
+            if (!context.Couriers.Any())
             {
-                context.Users.AddRange(
-                    new UserModel
+                context.Couriers.Add(
+                    new CourierModel
                     {
-                        Name = "Admin",
-                        Login = "admin",
-                        Password = "admin"
+                        Identity = new UserModel
+                        {
+                            FirstName = "Courier",
+                            LastName = "Courier",
+                        }
                     });
                 context.SaveChanges();
             }

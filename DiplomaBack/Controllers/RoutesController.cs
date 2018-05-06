@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using DiplomaBack.BLL;
 using DiplomaBack.BLL.BusinessModels;
 using DiplomaBack.DAL.Entities.Order;
 using DiplomaBack.DAL.EntityFrameworkCore;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DiplomaBack.Controllers
 {
+    //[Authorize(Policy = "ApiUser")]
     [Produces("application/json")]
     [Route("api/Routes")]
     public class RoutesController : Controller
@@ -56,31 +53,6 @@ namespace DiplomaBack.Controllers
                 counter++;
             }
             return routes;
-        }
-
-        // GET: api/Routes/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-        
-        // POST: api/Routes
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-        
-        // PUT: api/Routes/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-        
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }
