@@ -49,7 +49,7 @@ namespace DiplomaBack.BLL
 
         private List<RouteInfo> GetShortRoute(List<RouteInfo> routesInfo, int countRoutes)
         {
-            routesInfo.OrderBy(x => x.Distance);
+            //routesInfo.OrderBy(x => x.Distance);
             var weights = GetHamiltonianGraph(routesInfo, countRoutes);
             var shorterRoutes = new BranchAndBound(weights).GetShortestHamiltonianCycle().ToList();
             shorterRoutes.RemoveAt(0);

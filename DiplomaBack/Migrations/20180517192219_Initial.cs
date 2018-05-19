@@ -32,8 +32,8 @@ namespace DiplomaBack.Migrations
                     ConcurrencyStamp = table.Column<string>(nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),
-                    FirstName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(maxLength: 25, nullable: true),
+                    LastName = table.Column<string>(maxLength: 25, nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
@@ -56,7 +56,7 @@ namespace DiplomaBack.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(maxLength: 20, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -69,59 +69,11 @@ namespace DiplomaBack.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(maxLength: 20, nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DishCategories", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Dishes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CategoryId = table.Column<int>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    Image = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    Price = table.Column<double>(nullable: false),
-                    Quantity = table.Column<int>(nullable: false),
-                    RestaurantId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Dishes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "DishOrders",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DishId = table.Column<int>(nullable: false),
-                    OrderId = table.Column<int>(nullable: false),
-                    Quantity = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DishOrders", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Files",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    Path = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Files", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -131,9 +83,9 @@ namespace DiplomaBack.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DateTime = table.Column<DateTime>(nullable: false),
-                    DeliveryAddress = table.Column<string>(nullable: true),
+                    DeliveryAddress = table.Column<string>(maxLength: 250, nullable: true),
                     OrderPrice = table.Column<double>(nullable: false),
-                    PhoneNumber = table.Column<string>(nullable: true)
+                    PhoneNumber = table.Column<string>(maxLength: 15, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -146,29 +98,11 @@ namespace DiplomaBack.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(maxLength: 20, nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RestaurantCategories", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Restaurants",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Address = table.Column<string>(nullable: true),
-                    CityId = table.Column<int>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    Image = table.Column<string>(nullable: true),
-                    MinimunSum = table.Column<double>(nullable: false),
-                    Name = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Restaurants", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -296,6 +230,95 @@ namespace DiplomaBack.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Restaurants",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Address = table.Column<string>(maxLength: 250, nullable: true),
+                    CategoryId = table.Column<int>(nullable: false),
+                    CityId = table.Column<int>(nullable: false),
+                    Description = table.Column<string>(maxLength: 500, nullable: true),
+                    Image = table.Column<string>(nullable: true),
+                    MinimunSum = table.Column<double>(nullable: false),
+                    Name = table.Column<string>(maxLength: 25, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Restaurants", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Restaurants_RestaurantCategories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "RestaurantCategories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Restaurants_Cities_CityId",
+                        column: x => x.CityId,
+                        principalTable: "Cities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Dishes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CategoryId = table.Column<int>(nullable: false),
+                    Description = table.Column<string>(maxLength: 500, nullable: true),
+                    Image = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 25, nullable: true),
+                    Price = table.Column<double>(nullable: false),
+                    Quantity = table.Column<int>(nullable: false),
+                    RestaurantId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Dishes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Dishes_DishCategories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "DishCategories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Dishes_Restaurants_RestaurantId",
+                        column: x => x.RestaurantId,
+                        principalTable: "Restaurants",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DishOrders",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DishId = table.Column<int>(nullable: false),
+                    OrderId = table.Column<int>(nullable: false),
+                    Quantity = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DishOrders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DishOrders_Dishes_DishId",
+                        column: x => x.DishId,
+                        principalTable: "Dishes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DishOrders_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -339,6 +362,36 @@ namespace DiplomaBack.Migrations
                 name: "IX_Couriers_IdentityId",
                 table: "Couriers",
                 column: "IdentityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Dishes_CategoryId",
+                table: "Dishes",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Dishes_RestaurantId",
+                table: "Dishes",
+                column: "RestaurantId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DishOrders_DishId",
+                table: "DishOrders",
+                column: "DishId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DishOrders_OrderId",
+                table: "DishOrders",
+                column: "OrderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Restaurants_CategoryId",
+                table: "Restaurants",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Restaurants_CityId",
+                table: "Restaurants",
+                column: "CityId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -359,37 +412,34 @@ namespace DiplomaBack.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Cities");
-
-            migrationBuilder.DropTable(
                 name: "Couriers");
 
             migrationBuilder.DropTable(
-                name: "DishCategories");
-
-            migrationBuilder.DropTable(
-                name: "Dishes");
-
-            migrationBuilder.DropTable(
                 name: "DishOrders");
-
-            migrationBuilder.DropTable(
-                name: "Files");
-
-            migrationBuilder.DropTable(
-                name: "Orders");
-
-            migrationBuilder.DropTable(
-                name: "RestaurantCategories");
-
-            migrationBuilder.DropTable(
-                name: "Restaurants");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Dishes");
+
+            migrationBuilder.DropTable(
+                name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "DishCategories");
+
+            migrationBuilder.DropTable(
+                name: "Restaurants");
+
+            migrationBuilder.DropTable(
+                name: "RestaurantCategories");
+
+            migrationBuilder.DropTable(
+                name: "Cities");
         }
     }
 }

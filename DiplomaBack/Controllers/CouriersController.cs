@@ -33,7 +33,7 @@ namespace DiplomaBack.Controllers
             var userModels = new List<UserModel>();
             foreach (var courierId in couriersId)
             {
-                if (courierId.Identity == null)
+                if (courierId.UserModel == null)
                 {
                     userModels.AddRange(users.Where(x => x.Id == courierId.IdentityId));
                 }

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using DiplomaBack.BLL;
 using DiplomaBack.BLL.BusinessModels;
 using DiplomaBack.DAL.Entities;
+using DiplomaBack.DAL.Entities.Restaurant;
 using DiplomaBack.DAL.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

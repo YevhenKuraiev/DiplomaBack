@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DiplomaBack.DAL.Entities;
+using DiplomaBack.DAL.Entities.Dish;
 using DiplomaBack.DAL.EntityFrameworkCore;
 
 namespace DiplomaBack.Controllers

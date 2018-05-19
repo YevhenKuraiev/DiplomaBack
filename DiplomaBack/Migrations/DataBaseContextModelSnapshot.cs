@@ -25,7 +25,8 @@ namespace DiplomaBack.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasMaxLength(20);
 
                     b.HasKey("Id");
 
@@ -46,30 +47,33 @@ namespace DiplomaBack.Migrations
                     b.ToTable("Couriers");
                 });
 
-            modelBuilder.Entity("DiplomaBack.DAL.Entities.DishCategoryModel", b =>
+            modelBuilder.Entity("DiplomaBack.DAL.Entities.Dish.DishCategoryModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasMaxLength(20);
 
                     b.HasKey("Id");
 
                     b.ToTable("DishCategories");
                 });
 
-            modelBuilder.Entity("DiplomaBack.DAL.Entities.DishModel", b =>
+            modelBuilder.Entity("DiplomaBack.DAL.Entities.Dish.DishModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("CategoryId");
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .HasMaxLength(500);
 
                     b.Property<string>("Image");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasMaxLength(25);
 
                     b.Property<double>("Price");
 
@@ -79,21 +83,11 @@ namespace DiplomaBack.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("RestaurantId");
+
                     b.ToTable("Dishes");
-                });
-
-            modelBuilder.Entity("DiplomaBack.DAL.Entities.FileModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("Path");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Files");
                 });
 
             modelBuilder.Entity("DiplomaBack.DAL.Entities.Order.DishOrderModel", b =>
@@ -109,6 +103,10 @@ namespace DiplomaBack.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DishId");
+
+                    b.HasIndex("OrderId");
+
                     b.ToTable("DishOrders");
                 });
 
@@ -119,47 +117,59 @@ namespace DiplomaBack.Migrations
 
                     b.Property<DateTime>("DateTime");
 
-                    b.Property<string>("DeliveryAddress");
+                    b.Property<string>("DeliveryAddress")
+                        .HasMaxLength(250);
 
                     b.Property<double>("OrderPrice");
 
-                    b.Property<string>("PhoneNumber");
+                    b.Property<string>("PhoneNumber")
+                        .HasMaxLength(15);
 
                     b.HasKey("Id");
 
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("DiplomaBack.DAL.Entities.RestaurantCategoryModel", b =>
+            modelBuilder.Entity("DiplomaBack.DAL.Entities.Restaurant.RestaurantCategoryModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasMaxLength(20);
 
                     b.HasKey("Id");
 
                     b.ToTable("RestaurantCategories");
                 });
 
-            modelBuilder.Entity("DiplomaBack.DAL.Entities.RestaurantModel", b =>
+            modelBuilder.Entity("DiplomaBack.DAL.Entities.Restaurant.RestaurantModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Address");
+                    b.Property<string>("Address")
+                        .HasMaxLength(250);
+
+                    b.Property<int>("CategoryId");
 
                     b.Property<int>("CityId");
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .HasMaxLength(500);
 
                     b.Property<string>("Image");
 
                     b.Property<double>("MinimunSum");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasMaxLength(25);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("CityId");
 
                     b.ToTable("Restaurants");
                 });
@@ -179,9 +189,11 @@ namespace DiplomaBack.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
-                    b.Property<string>("FirstName");
+                    b.Property<string>("FirstName")
+                        .HasMaxLength(25);
 
-                    b.Property<string>("LastName");
+                    b.Property<string>("LastName")
+                        .HasMaxLength(25);
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -329,9 +341,48 @@ namespace DiplomaBack.Migrations
 
             modelBuilder.Entity("DiplomaBack.DAL.Entities.CourierModel", b =>
                 {
-                    b.HasOne("DiplomaBack.DAL.Entities.UserModel", "Identity")
+                    b.HasOne("DiplomaBack.DAL.Entities.UserModel", "UserModel")
                         .WithMany()
                         .HasForeignKey("IdentityId");
+                });
+
+            modelBuilder.Entity("DiplomaBack.DAL.Entities.Dish.DishModel", b =>
+                {
+                    b.HasOne("DiplomaBack.DAL.Entities.Dish.DishCategoryModel", "DishCategoryModel")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DiplomaBack.DAL.Entities.Restaurant.RestaurantModel", "RestaurantModel")
+                        .WithMany()
+                        .HasForeignKey("RestaurantId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("DiplomaBack.DAL.Entities.Order.DishOrderModel", b =>
+                {
+                    b.HasOne("DiplomaBack.DAL.Entities.Dish.DishModel", "DishModel")
+                        .WithMany()
+                        .HasForeignKey("DishId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DiplomaBack.DAL.Entities.Order.OrderModel", "OrderModel")
+                        .WithMany()
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("DiplomaBack.DAL.Entities.Restaurant.RestaurantModel", b =>
+                {
+                    b.HasOne("DiplomaBack.DAL.Entities.Restaurant.RestaurantCategoryModel", "RestaurantCategoryModel")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DiplomaBack.DAL.Entities.CityModel", "CityModel")
+                        .WithMany()
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

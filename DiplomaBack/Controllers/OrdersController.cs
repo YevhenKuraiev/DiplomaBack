@@ -7,6 +7,7 @@ using DiplomaBack.DAL.Entities.Order;
 using DiplomaBack.DAL.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
 using System;
+using DiplomaBack.Models;
 
 namespace DiplomaBack.Controllers
 {

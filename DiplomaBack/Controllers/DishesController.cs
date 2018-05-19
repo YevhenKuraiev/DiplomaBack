@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using DiplomaBack.DAL.Entities;
+using DiplomaBack.DAL.Entities.Dish;
 using DiplomaBack.DAL.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

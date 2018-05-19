@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using DiplomaBack.DAL.Entities.Dish;
+using DiplomaBack.DAL.Entities.Order;
 
-namespace DiplomaBack.DAL.Entities.Order
+namespace DiplomaBack.Models
 {
     public class OrderViewModel
     {

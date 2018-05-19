@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using DiplomaBack.DAL.Entities;
+using DiplomaBack.DAL.Entities.Dish;
 using DiplomaBack.DAL.Entities.Order;
+using DiplomaBack.DAL.Entities.Restaurant;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +14,6 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
         public DbSet<CityModel> Cities { get; set; }
         public DbSet<RestaurantModel> Restaurants { get; set; }
         public DbSet<RestaurantCategoryModel> RestaurantCategories { get; set; }
-        public DbSet<FileModel> Files { get; set; }
         public DbSet<DishModel> Dishes { get; set; }
         public DbSet<DishCategoryModel> DishCategories { get; set; }
         public DbSet<CourierModel> Couriers { get; set; }
@@ -32,7 +33,7 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
         public static void Initialize(DataBaseContext context, IHostingEnvironment appEnvironment)
         {
             //context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
+            //context.Database.EnsureCreated();
             if (!context.Cities.Any())
             {
                 context.Cities.AddRange(
@@ -52,6 +53,17 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                 context.SaveChanges();
             }
 
+            if (!context.RestaurantCategories.Any())
+            {
+                context.RestaurantCategories.AddRange(
+                    new RestaurantCategoryModel()
+                    {
+                        Name = "Стандарт",
+                    }
+                );
+                context.SaveChanges();
+            }
+
             if (!context.Restaurants.Any())
             {
                 context.Restaurants.AddRange(
@@ -62,7 +74,9 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         Address = "ул. Космическая, вулиця Космічна, 21, Харків, Харківська область, 61000",
                         MinimunSum = 100,
                         Image = $"{UrlApi}Files/Restaurants/Kharkov/FatGoosePub.png",
-                        CityId = 0
+                        CityId = 1,
+                        CategoryId = 1
+                   
                     },
                     new RestaurantModel
                     {
@@ -77,7 +91,8 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         Address = "улица Квитки-Основьяненко, 7, Харків, Харківська область, 61000",
                         MinimunSum = 99,
                         Image = $"{UrlApi}Files/Restaurants/Kharkov/Mafia.jpg",
-                        CityId = 0
+                        CityId = 1,
+                        CategoryId = 1
                     },
                     new RestaurantModel
                     {
@@ -87,7 +102,8 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         Address = "Пр. Науки, 48 | D.48, Харьков 61103, Украина",
                         MinimunSum = 150,
                         Image = $"{UrlApi}Files/Restaurants/Kharkov/BigBenPub.jpg",
-                        CityId = 0
+                        CityId = 1,
+                        CategoryId = 1
                     },
                     new RestaurantModel
                     {
@@ -96,141 +112,9 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         Address = "Пр. тест",
                         MinimunSum = 150,
                         Image = $"{UrlApi}Files/Restaurants/Kharkov/BigBenPub.jpg",
-                        CityId = 0
+                        CityId = 1,
+                        CategoryId = 1
                     }
-                );
-                context.SaveChanges();
-            }
-
-            if (!context.Dishes.Any())
-            {
-                context.Dishes.AddRange(
-
-                    #region Роллы
-
-                    new DishModel
-                    {
-                        Name = "Ролл",
-                        Price = 150,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = $"{UrlApi}Files/Dishes/Sushi/losos.jpg",
-                        RestaurantId = 0,
-                        CategoryId = 0
-                    },
-                    new DishModel
-                    {
-                        Name = "Ролл 2",
-                        Price = 200,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = $"{UrlApi}Files/Dishes/Sushi/losos2.jpg",
-                        RestaurantId = 0,
-                        CategoryId = 0
-                    },
-                    new DishModel
-                    {
-                        Name = "Ролл 3",
-                        Price = 175,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = $"{UrlApi}Files/Dishes/Sushi/losos3.jpg",
-                        RestaurantId = 1,
-                        CategoryId = 0
-                    },
-                    new DishModel
-                    {
-                        Name = "Ролл 4",
-                        Price = 225,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = $"{UrlApi}Files/Dishes/Sushi/losos4.jpg",
-                        RestaurantId = 1,
-                        CategoryId = 0
-                    },
-                    new DishModel
-                    {
-                        Name = "Ролл 5",
-                        Price = 85,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = $"{UrlApi}Files/Dishes/Sushi/losos5.jpg",
-                        RestaurantId = 2,
-                        CategoryId = 0
-                    },
-
-                    #endregion
-
-                    #region Супы
-
-                    new DishModel
-                    {
-                        Name = "Суп 1",
-                        Price = 85,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = $"{UrlApi}Files/Dishes/Soups/soup.jpg",
-                        RestaurantId = 2,
-                        CategoryId = 1
-                    },
-                    new DishModel
-                    {
-                        Name = "Суп 2",
-                        Price = 95,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = $"{UrlApi}Files/Dishes/Soups/soup2.jpg",
-                        RestaurantId = 2,
-                        CategoryId = 1
-                    },
-                    new DishModel
-                    {
-                        Name = "Суп 3",
-                        Price = 125,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = $"{UrlApi}Files/Dishes/Soups/soup3.jpg",
-                        RestaurantId = 3,
-                        CategoryId = 1
-                    },
-                    new DishModel
-                    {
-                        Name = "Суп 4",
-                        Price = 155,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = $"{UrlApi}Files/Dishes/Soups/soup4.jpg",
-                        RestaurantId = 2,
-                        CategoryId = 1
-                    },
-                    new DishModel
-                    {
-                        Name = "Суп 5",
-                        Price = 115,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = $"{UrlApi}Files/Dishes/Soups/soup5.jpg",
-                        RestaurantId = 2,
-                        CategoryId = 1
-                    },
-
-                    #endregion
-
-                    #region Бургеры
-
-
-                    new DishModel
-                    {
-                        Name = "Бургер 1",
-                        Price = 85,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = $"{UrlApi}Files/Dishes/Burgers/burger1.jpg",
-                        RestaurantId = 1,
-                        CategoryId = 2
-                    },
-                    new DishModel
-                    {
-                        Name = "Бургер 2",
-                        Price = 65,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
-                        Image = $"{UrlApi}Files/Dishes/Burgers/burger2.jpg",
-                        RestaurantId = 1,
-                        CategoryId = 2
-                    }
-
-                    #endregion
-
-
                 );
                 context.SaveChanges();
             }
@@ -264,12 +148,145 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                 context.SaveChanges();
             }
 
+            if (!context.Dishes.Any())
+            {
+                context.Dishes.AddRange(
+
+                    #region Роллы
+
+                    new DishModel
+                    {
+                        Name = "Ролл",
+                        Price = 150,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = $"{UrlApi}Files/Dishes/Sushi/losos.jpg",
+                        RestaurantId = 1,
+                        CategoryId = 1
+                    },
+                    new DishModel
+                    {
+                        Name = "Ролл 2",
+                        Price = 200,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = $"{UrlApi}Files/Dishes/Sushi/losos2.jpg",
+                        RestaurantId = 1,
+                        CategoryId = 1
+                    },
+                    new DishModel
+                    {
+                        Name = "Ролл 3",
+                        Price = 175,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = $"{UrlApi}Files/Dishes/Sushi/losos3.jpg",
+                        RestaurantId = 2,
+                        CategoryId = 1
+                    },
+                    new DishModel
+                    {
+                        Name = "Ролл 4",
+                        Price = 225,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = $"{UrlApi}Files/Dishes/Sushi/losos4.jpg",
+                        RestaurantId = 2,
+                        CategoryId = 1
+                    },
+                    new DishModel
+                    {
+                        Name = "Ролл 5",
+                        Price = 85,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = $"{UrlApi}Files/Dishes/Sushi/losos5.jpg",
+                        RestaurantId = 3,
+                        CategoryId = 1
+                    },
+
+                    #endregion
+
+                    #region Супы
+
+                    new DishModel
+                    {
+                        Name = "Суп 1",
+                        Price = 85,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = $"{UrlApi}Files/Dishes/Soups/soup.jpg",
+                        RestaurantId = 3,
+                        CategoryId = 1
+                    },
+                    new DishModel
+                    {
+                        Name = "Суп 2",
+                        Price = 95,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = $"{UrlApi}Files/Dishes/Soups/soup2.jpg",
+                        RestaurantId = 3,
+                        CategoryId = 2
+                    },
+                    new DishModel
+                    {
+                        Name = "Суп 3",
+                        Price = 125,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = $"{UrlApi}Files/Dishes/Soups/soup3.jpg",
+                        RestaurantId = 2,
+                        CategoryId = 2
+                    },
+                    new DishModel
+                    {
+                        Name = "Суп 4",
+                        Price = 155,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = $"{UrlApi}Files/Dishes/Soups/soup4.jpg",
+                        RestaurantId = 2,
+                        CategoryId = 2
+                    },
+                    new DishModel
+                    {
+                        Name = "Суп 5",
+                        Price = 115,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = $"{UrlApi}Files/Dishes/Soups/soup5.jpg",
+                        RestaurantId = 2,
+                        CategoryId = 2
+                    },
+
+                    #endregion
+
+                    #region Бургеры
+
+
+                    new DishModel
+                    {
+                        Name = "Бургер 1",
+                        Price = 85,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = $"{UrlApi}Files/Dishes/Burgers/burger1.jpg",
+                        RestaurantId = 1,
+                        CategoryId = 2
+                    },
+                    new DishModel
+                    {
+                        Name = "Бургер 2",
+                        Price = 65,
+                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Image = $"{UrlApi}Files/Dishes/Burgers/burger2.jpg",
+                        RestaurantId = 1,
+                        CategoryId = 2
+                    }
+
+                    #endregion
+
+
+                );
+                context.SaveChanges();
+            }
+
             if (!context.Couriers.Any())
             {
                 context.Couriers.Add(
                     new CourierModel
                     {
-                        Identity = new UserModel
+                        UserModel = new UserModel
                         {
                             FirstName = "Courier",
                             LastName = "Courier",
