@@ -109,8 +109,9 @@ namespace DiplomaBack.Controllers
                 DateTime = orderModel.DateTime,
                 DeliveryAddress = orderModel.DeliveryAddress,
                 OrderPrice = orderModel.OrderPrice,
-                Id = orderModel.Id,
-                PhoneNumber = orderModel.PhoneNumber
+                //Id = orderModel.Id,
+                PhoneNumber = orderModel.PhoneNumber,
+                RestaurantId = 1
             };
             _context.Orders.Add(orderModelTemp);
             await _context.SaveChangesAsync();

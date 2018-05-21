@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DiplomaBack.DAL.Entities.Restaurant;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DiplomaBack.DAL.Entities.Dish
@@ -8,21 +9,23 @@ namespace DiplomaBack.DAL.Entities.Dish
         [Key]
         public int Id { get; set; }
 
-        [MaxLength(25)]
+        [MaxLength(24)]
         public string Name { get; set; }
 
-        [MaxLength(500)]
+        [MaxLength(510)]
         public string Description { get; set; }
         public double Price { get; set; }
+
+        [MaxLength(510)]
         public string Image { get; set; }
         public int Quantity { get; set; }
 
         [ForeignKey("RestaurantModel")]
         public int RestaurantId { get; set; }
-        public Restaurant.RestaurantModel RestaurantModel { get; set; }
+        public virtual RestaurantModel RestaurantModel { get; set; }
 
         [ForeignKey("DishCategoryModel")]
         public int CategoryId { get; set; }
-        public DishCategoryModel DishCategoryModel { get; set; }
+        public virtual DishCategoryModel DishCategoryModel { get; set; }
     }
 }

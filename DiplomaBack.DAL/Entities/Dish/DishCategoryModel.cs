@@ -7,7 +7,7 @@ namespace DiplomaBack.DAL.Entities.Dish
         [Key]
         public int Id { get; set; }
 
-        [MaxLength(20)]
+        [MaxLength(24)]
         public string Name { get; set; }
     }
 }

@@ -26,7 +26,7 @@ namespace DiplomaBack.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
-                        .HasMaxLength(20);
+                        .HasMaxLength(24);
 
                     b.HasKey("Id");
 
@@ -40,9 +40,13 @@ namespace DiplomaBack.Migrations
 
                     b.Property<string>("IdentityId");
 
+                    b.Property<int>("RestaurantId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("IdentityId");
+
+                    b.HasIndex("RestaurantId");
 
                     b.ToTable("Couriers");
                 });
@@ -53,7 +57,7 @@ namespace DiplomaBack.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
-                        .HasMaxLength(20);
+                        .HasMaxLength(24);
 
                     b.HasKey("Id");
 
@@ -68,12 +72,13 @@ namespace DiplomaBack.Migrations
                     b.Property<int>("CategoryId");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(500);
+                        .HasMaxLength(510);
 
-                    b.Property<string>("Image");
+                    b.Property<string>("Image")
+                        .HasMaxLength(510);
 
                     b.Property<string>("Name")
-                        .HasMaxLength(25);
+                        .HasMaxLength(24);
 
                     b.Property<double>("Price");
 
@@ -95,9 +100,9 @@ namespace DiplomaBack.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("DishId");
+                    b.Property<int?>("DishId");
 
-                    b.Property<int>("OrderId");
+                    b.Property<int?>("OrderId");
 
                     b.Property<int>("Quantity");
 
@@ -118,14 +123,18 @@ namespace DiplomaBack.Migrations
                     b.Property<DateTime>("DateTime");
 
                     b.Property<string>("DeliveryAddress")
-                        .HasMaxLength(250);
+                        .HasMaxLength(254);
 
                     b.Property<double>("OrderPrice");
 
                     b.Property<string>("PhoneNumber")
-                        .HasMaxLength(15);
+                        .HasMaxLength(24);
+
+                    b.Property<int>("RestaurantId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("RestaurantId");
 
                     b.ToTable("Orders");
                 });
@@ -136,7 +145,7 @@ namespace DiplomaBack.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
-                        .HasMaxLength(20);
+                        .HasMaxLength(24);
 
                     b.HasKey("Id");
 
@@ -149,21 +158,22 @@ namespace DiplomaBack.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Address")
-                        .HasMaxLength(250);
+                        .HasMaxLength(254);
 
                     b.Property<int>("CategoryId");
 
                     b.Property<int>("CityId");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(500);
+                        .HasMaxLength(510);
 
-                    b.Property<string>("Image");
+                    b.Property<string>("Image")
+                        .HasMaxLength(510);
 
                     b.Property<double>("MinimunSum");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(25);
+                        .HasMaxLength(24);
 
                     b.HasKey("Id");
 
@@ -190,10 +200,10 @@ namespace DiplomaBack.Migrations
                     b.Property<bool>("EmailConfirmed");
 
                     b.Property<string>("FirstName")
-                        .HasMaxLength(25);
+                        .HasMaxLength(24);
 
                     b.Property<string>("LastName")
-                        .HasMaxLength(25);
+                        .HasMaxLength(24);
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -344,6 +354,11 @@ namespace DiplomaBack.Migrations
                     b.HasOne("DiplomaBack.DAL.Entities.UserModel", "UserModel")
                         .WithMany()
                         .HasForeignKey("IdentityId");
+
+                    b.HasOne("DiplomaBack.DAL.Entities.Restaurant.RestaurantModel", "Restaurant")
+                        .WithMany()
+                        .HasForeignKey("RestaurantId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("DiplomaBack.DAL.Entities.Dish.DishModel", b =>
@@ -363,12 +378,18 @@ namespace DiplomaBack.Migrations
                 {
                     b.HasOne("DiplomaBack.DAL.Entities.Dish.DishModel", "DishModel")
                         .WithMany()
-                        .HasForeignKey("DishId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("DishId");
 
                     b.HasOne("DiplomaBack.DAL.Entities.Order.OrderModel", "OrderModel")
                         .WithMany()
-                        .HasForeignKey("OrderId")
+                        .HasForeignKey("OrderId");
+                });
+
+            modelBuilder.Entity("DiplomaBack.DAL.Entities.Order.OrderModel", b =>
+                {
+                    b.HasOne("DiplomaBack.DAL.Entities.Restaurant.RestaurantModel", "Restaurant")
+                        .WithMany()
+                        .HasForeignKey("RestaurantId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

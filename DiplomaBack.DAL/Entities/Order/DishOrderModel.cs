@@ -10,12 +10,12 @@ namespace DiplomaBack.DAL.Entities.Order
         public int Id { get; set; }
 
         [ForeignKey("DishModel")]
-        public int DishId { get; set; }
-        public DishModel DishModel { get; set; }
+        public int? DishId { get; set; }
+        public virtual DishModel DishModel { get; set; }
         public int Quantity { get; set; }
 
         [ForeignKey("OrderModel")]
-        public int OrderId { get; set; }
-        public OrderModel OrderModel { get; set; }
+        public int? OrderId { get; set; }
+        public virtual OrderModel OrderModel { get; set; }
     }
 }

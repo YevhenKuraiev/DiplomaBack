@@ -5,9 +5,10 @@ namespace DiplomaBack.DAL.Entities
 {
     public class UserModel : IdentityUser
     {
-        [MaxLength(25)]
+        [MaxLength(24)]
         public string FirstName { get; set; }
-        [MaxLength(25)]
+
+        [MaxLength(24)]
         public string LastName { get; set; }
     }
 }

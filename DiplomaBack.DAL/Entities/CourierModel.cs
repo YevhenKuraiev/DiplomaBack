@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DiplomaBack.DAL.Entities.Restaurant;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DiplomaBack.DAL.Entities
@@ -10,6 +11,10 @@ namespace DiplomaBack.DAL.Entities
 
         [ForeignKey("UserModel")]
         public string IdentityId { get; set; }
-        public UserModel UserModel { get; set; } 
+        public virtual UserModel UserModel { get; set; }
+
+        [ForeignKey("Restaurant")]
+        public int RestaurantId { get; set; }
+        public virtual RestaurantModel Restaurant { get; set; }
     }
 }

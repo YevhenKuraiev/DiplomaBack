@@ -290,7 +290,8 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
                         {
                             FirstName = "Courier",
                             LastName = "Courier",
-                        }
+                        },
+                         RestaurantId = 0,
                     });
                 context.SaveChanges();
             }
