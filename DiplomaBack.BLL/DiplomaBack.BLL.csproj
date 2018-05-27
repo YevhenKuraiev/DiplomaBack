@@ -7,7 +7,7 @@
   <ItemGroup>
     <PackageReference Include="GoogleMapsAPI.NET" Version="1.0.0" />
     <PackageReference Include="HamiltonianGraph" Version="1.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="2.4.0" />
   </ItemGroup>
 

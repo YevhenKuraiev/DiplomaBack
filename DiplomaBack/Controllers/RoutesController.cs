@@ -34,6 +34,13 @@ namespace DiplomaBack.Controllers
             return distanceList;
         }
 
+        [HttpPost]
+        public List<AddressCoordinates> GetCoordinatesList([FromBody] List<string> adresses)
+        {
+            return new AddressConverter().AddressToCoordinates(adresses);
+        }
+
+
 
         private List<Route> GetRoutesFromOrders(List<OrderModel> orderModels)
         {
