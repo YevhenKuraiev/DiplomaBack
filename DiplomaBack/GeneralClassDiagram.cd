@@ -1,46 +1,99 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="DiplomaBack.Controllers.AuthController">
+    <Position X="6.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AiAABAAAAAAAAAAgAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Controllers\AuthController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="DiplomaBack.Controllers.CategoriesController">
-    <Position X="0.5" Y="0.5" Width="3.75" />
+    <Position X="4" Y="5.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAABAAAEAABAAiAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Controllers\CategoriesController.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="DiplomaBack.Controllers.CouriersController">
+    <Position X="11" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAIAAAABAAAAAAAAAAAAAABACAAAAAA=</HashCode>
+      <FileName>Controllers\CouriersController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="DiplomaBack.Controllers.DishesController">
-    <Position X="4.5" Y="3.5" Width="3.5" />
+    <Position X="1.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACAgEAAAADAIAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Controllers\DishesController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DiplomaBack.Controllers.OrdersController">
-    <Position X="8.5" Y="0.5" Width="4.5" />
+    <Position X="3.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAQgAAAAABIAAAAAAkAAAAAEBAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Controllers\OrdersController.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_context" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="DiplomaBack.Controllers.RestaurantsController">
-    <Position X="4.5" Y="0.5" Width="3.5" />
+    <Position X="5" Y="1.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAABIAAAAAIABCAAAAABQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Controllers\RestaurantsController.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_context" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="DiplomaBack.Controllers.RoutesController">
-    <Position X="0.5" Y="3.5" Width="3.75" />
+    <Position X="1" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAABABAAEAAAAAACAEAAAAAAAAAAAAAAAg=</HashCode>
+      <HashCode>AAAAAAAAAAAABABAAEAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
       <FileName>Controllers\RoutesController.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DiplomaBack.Controllers.UsersController">
-    <Position X="8.5" Y="3.75" Width="4.5" />
-    <TypeIdentifier>
-      <HashCode>IAAAAAABAAAABAAAABAAAAAAAAAAAAAAACAAAABAAAA=</HashCode>
-      <FileName>Controllers\UsersController.cs</FileName>
-    </TypeIdentifier>
+  <Class Name="DiplomaBack.DAL.Entities.Dish.DishCategoryModel" Collapsed="true">
+    <Position X="7" Y="2" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="DiplomaBack.DAL.Entities.Dish.DishModel" Collapsed="true">
+    <Position X="8.75" Y="2" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="DiplomaBack.DAL.Entities.Order.DishOrderModel" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="DiplomaBack.DAL.Entities.Order.OrderModel" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="DiplomaBack.DAL.Entities.Restaurant.RestaurantCategoryModel" Collapsed="true">
+    <Position X="11" Y="4.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="DiplomaBack.DAL.Entities.Restaurant.RestaurantModel" Collapsed="true">
+    <Position X="12.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="DiplomaBack.DAL.Entities.CityModel" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="DiplomaBack.DAL.Entities.CourierModel" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="DiplomaBack.DAL.Entities.UserModel" Collapsed="true">
+    <Position X="9.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="DiplomaBack.DAL.EntityFrameworkCore.DataBaseContext" Collapsed="true">
+    <Position X="8.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

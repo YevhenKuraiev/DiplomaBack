@@ -156,45 +156,45 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
 
                     new DishModel
                     {
-                        Name = "Ролл",
+                        Name = "Спайси кальмар",
                         Price = 150,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Description = "Кальмар в соусе Спайси, рис, васаби, нори",
                         Image = $"{UrlApi}Files/Dishes/Sushi/losos.jpg",
                         RestaurantId = 1,
                         CategoryId = 1
                     },
                     new DishModel
                     {
-                        Name = "Ролл 2",
+                        Name = "Спайси лосось",
                         Price = 200,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Description = "Копченый лосось в соусе Спайси, рис, васаби, нори",
                         Image = $"{UrlApi}Files/Dishes/Sushi/losos2.jpg",
                         RestaurantId = 1,
                         CategoryId = 1
                     },
                     new DishModel
                     {
-                        Name = "Ролл 3",
+                        Name = "Спайси тунец",
                         Price = 175,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Description = "Тунец в соусе Спайси, рис, васаби, нори",
                         Image = $"{UrlApi}Files/Dishes/Sushi/losos3.jpg",
                         RestaurantId = 2,
                         CategoryId = 1
                     },
                     new DishModel
                     {
-                        Name = "Ролл 4",
+                        Name = "Спайси угорь",
                         Price = 225,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Description = "Копченый угорь в соусе Спайси, рис, васаби, нори",
                         Image = $"{UrlApi}Files/Dishes/Sushi/losos4.jpg",
                         RestaurantId = 2,
                         CategoryId = 1
                     },
                     new DishModel
                     {
-                        Name = "Ролл 5",
+                        Name = "Спайси креветка",
                         Price = 85,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Description = "Тигровая креветка в соусе Спайси, рис, васаби, нори. средней остроты",
                         Image = $"{UrlApi}Files/Dishes/Sushi/losos5.jpg",
                         RestaurantId = 3,
                         CategoryId = 1
@@ -206,45 +206,45 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
 
                     new DishModel
                     {
-                        Name = "Суп 1",
+                        Name = "Китайский куриный суп",
                         Price = 85,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Description = "С куриными слайсами яичной лапшой и лапшой из омлета",
                         Image = $"{UrlApi}Files/Dishes/Soups/soup.jpg",
                         RestaurantId = 3,
                         CategoryId = 1
                     },
                     new DishModel
                     {
-                        Name = "Суп 2",
+                        Name = "Китайский суп Вон Тон",
                         Price = 95,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Description = "Пельмени Вон Тон с уткой и курицей в бульоне Шою",
                         Image = $"{UrlApi}Files/Dishes/Soups/soup2.jpg",
                         RestaurantId = 3,
                         CategoryId = 2
                     },
                     new DishModel
                     {
-                        Name = "Суп 3",
+                        Name = "Том Кха кай",
                         Price = 125,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Description = "Традиционный тайский суп на кокосовом молоке с куриным филе и шампиньонами",
                         Image = $"{UrlApi}Files/Dishes/Soups/soup3.jpg",
                         RestaurantId = 2,
                         CategoryId = 2
                     },
                     new DishModel
                     {
-                        Name = "Суп 4",
+                        Name = "Том ям",
                         Price = 155,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Description = "Знаменитый тайский суп на кокосовом молоке с тигровыми креветками и кальмаром",
                         Image = $"{UrlApi}Files/Dishes/Soups/soup4.jpg",
                         RestaurantId = 2,
                         CategoryId = 2
                     },
                     new DishModel
                     {
-                        Name = "Суп 5",
+                        Name = "Мисо-суп",
                         Price = 115,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Description = "Японский суп мисо с тофу, грибами и водорослями вакаме",
                         Image = $"{UrlApi}Files/Dishes/Soups/soup5.jpg",
                         RestaurantId = 2,
                         CategoryId = 2
@@ -257,18 +257,18 @@ namespace DiplomaBack.DAL.EntityFrameworkCore
 
                     new DishModel
                     {
-                        Name = "Бургер 1",
+                        Name = "Блэк Бао Бургер",
                         Price = 85,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Description = "Сочная котлета из ягненка на черной паровой булке с помидором",
                         Image = $"{UrlApi}Files/Dishes/Burgers/burger1.jpg",
                         RestaurantId = 1,
                         CategoryId = 2
                     },
                     new DishModel
                     {
-                        Name = "Бургер 2",
+                        Name = "Биф рамен",
                         Price = 65,
-                        Description = "тестовое описание тестовое описание тестовое описание описание",
+                        Description = "Котлета из фермерской говядины, рамен-булка, сыр, маринованный огурец",
                         Image = $"{UrlApi}Files/Dishes/Burgers/burger2.jpg",
                         RestaurantId = 1,
                         CategoryId = 2

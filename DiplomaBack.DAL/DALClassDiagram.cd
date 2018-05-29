@@ -1,87 +1,95 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="DiplomaBack.DAL.Entities.Order.DishOrderModel">
-    <Position X="8" Y="0.5" Width="2" />
+    <Position X="9.75" Y="3.75" Width="2" />
+    <AssociationLine Name="OrderModel" Type="DiplomaBack.DAL.Entities.Order.OrderModel" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.75" Y="4.812" />
+        <Point X="13.312" Y="4.812" />
+        <Point X="13.312" Y="4.315" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.395" Y="0.433" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>EAACAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>EAACAAAAAAAAAAAAAAAAAAAAAkAAAAAAAgAAgAAAAAA=</HashCode>
       <FileName>Entities\Order\DishOrderModel.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DishModel" />
+      <Property Name="OrderModel" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="DiplomaBack.DAL.Entities.Order.OrderModel">
-    <Position X="2.75" Y="2" Width="2.5" />
+    <Position X="12" Y="2.25" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAABAAACAAQAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <HashCode>IAACAAAAAAAAABAAACAAQAAAAAAAAAQAAAAEAAAAAAA=</HashCode>
       <FileName>Entities\Order\OrderModel.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Restaurant" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="DiplomaBack.DAL.Entities.Order.OrderViewModel">
-    <Position X="5.5" Y="3.25" Width="2.75" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAABAAACQAQAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
-      <FileName>Entities\Order\OrderViewModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="DiplomaBack.DAL.Entities.DishCategoryModel">
-    <Position X="2.75" Y="0.5" Width="2" />
+  <Class Name="DiplomaBack.DAL.Entities.Dish.DishCategoryModel">
+    <Position X="3.25" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\Dish\DishCategoryModel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DiplomaBack.DAL.Entities.DishModel">
-    <Position X="5.5" Y="0.5" Width="2.25" />
+  <Class Name="DiplomaBack.DAL.Entities.Dish.DishModel">
+    <Position X="3" Y="2.25" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAQAgAgAAAAAAAAQAAAAAABAAAAAEgAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAQAgAgAAAAIAAAQAAAACABAAAAAEgAAAAAA=</HashCode>
       <FileName>Entities\Dish\DishModel.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DishCategoryModel" />
+      <Property Name="RestaurantModel" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="DiplomaBack.DAL.Entities.RestaurantCategoryModel">
-    <Position X="10.25" Y="0.5" Width="2" />
+  <Class Name="DiplomaBack.DAL.Entities.Restaurant.RestaurantCategoryModel">
+    <Position X="3.25" Y="5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\Restaurant\RestaurantCategoryModel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DiplomaBack.DAL.Entities.RestaurantModel">
-    <Position X="0.5" Y="3.75" Width="1.5" />
+  <Class Name="DiplomaBack.DAL.Entities.Restaurant.RestaurantModel">
+    <Position X="6.75" Y="2.75" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAACABABAAAgAAAAAAAAAAQAAAAAABACAAAAAAAAAAA=</HashCode>
+      <HashCode>AACCABABAAAgAgAAAAAAAAQAAAAAgBACAAAAAAAAAAA=</HashCode>
       <FileName>Entities\Restaurant\RestaurantModel.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CityModel" />
+      <Property Name="RestaurantCategoryModel" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="DiplomaBack.DAL.Entities.CityModel">
-    <Position X="0.5" Y="0.5" Width="2" />
+    <Position X="6" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\CityModel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DiplomaBack.DAL.Entities.FileModel">
-    <Position X="0.5" Y="2" Width="2" />
+  <Class Name="DiplomaBack.DAL.Entities.CourierModel">
+    <Position X="8.5" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAIAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Entities\FileModel.cs</FileName>
+      <HashCode>IAACAAAAAAAQAAAAAAAAAABAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Entities\CourierModel.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Restaurant" />
+      <Property Name="UserModel" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="DiplomaBack.DAL.Entities.UserModel">
-    <Position X="2.25" Y="4" Width="2.25" />
+    <Position X="12" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAACAAAQAAAAAAA=</HashCode>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>Entities\UserModel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="DiplomaBack.DAL.EntityFrameworkCore.DataBaseContext">
-    <Position X="8.5" Y="2.5" Width="4.5" />
-    <TypeIdentifier>
-      <HashCode>FAEAABAAAAAAAAAAAEQAAAAAAAAQAAAAAAAAAAAAAIA=</HashCode>
-      <FileName>EntityFrameworkCore\DataBaseContext.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="DiplomaBack.DAL.EntityFrameworkCore.SampleData">
-    <Position X="1.5" Y="1.25" Width="5.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
-      <FileName>EntityFrameworkCore\DataBaseContext.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
